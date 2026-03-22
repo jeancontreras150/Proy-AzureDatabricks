@@ -1,8 +1,8 @@
 # Documentación Técnica: Sistema de Procesamiento y Gobernanza de Datos para una plataforma de comercio electrónico (E-commerce)
 
 ## 📋 Resumen del Proyecto
-Este proyecto realiza una ejecucion de un modelo de arquitectura Medallion del cual extrae, transforma y carga datos hacia tablas delta para el análisis y tratamiento de datos en nube para la toma decisiones en una empresa.\
-**Propósito:** El sistema está diseñado para el **tratamiento y análisis de interacciones de clientes en el ambito del E-commerce** dentro de su interfaz web (interacciones en la pagina web, navegación, compras, preferencia de los productos y categorias, clientes), con el fin de optimizar la experiencia de usuario en la empresa.
+Este proyecto realiza una ejecución de un modelo de arquitectura Medallion del cual extrae, transforma y carga datos hacia tablas delta para el análisis y tratamiento de datos en nube para la toma decisiones en una empresa.\
+**Propósito:** El sistema está diseñado para el **tratamiento y análisis de interacciones de clientes en el ámbito de E-commerce** dentro de su interfaz web (interacciones en la pagina web, navegación, compras, preferencia de los productos y categorias, clientes), con el fin de optimizar la experiencia de usuario en la empresa.
 
 ![Arquitectura.png](Arquitectura.png)
 ---
@@ -364,5 +364,9 @@ Gestiona la gobernanza y los privilegios de los usuarios.
 ![Evidencia_Workflow_2.png](Evidencia_Workflow_2.png)
 
 ---
+### 📈 Dashboards del proyecto
+
+[https://github.com/jeancontreras150/Proy-AzureDatabricks/tree/construccion/dashboard](https://github.com/jeancontreras150/Proy-AzureDatabricks/tree/construccion/dashboard)
+
 
 > **Nota de Administración:** Este repositorio es mantenido por el administrador del workspace. Cualquier cambio en los permisos de las tablas debe ser documentado en la sección de auditoría.
