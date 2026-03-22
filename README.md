@@ -22,6 +22,83 @@ El proyecto se divide en tres capas lógicas para garantizar la calidad del dato
 2.  **Silver (Limpieza):** Datos filtrados, tipados y con esquemas definidos.
 3.  **Golden (Negocio):** Tablas finales listas para consumo de BI y analítica.
 
+### Diagrama de Arquitectura
+
+```mermaid
+flowchart TB
+    subgraph ADLS["☁️ Azure Data Lake Storage Gen2 - Archivos CSV"]
+        csv1["📄 clientes.csv"]
+        csv2["📄 ecommerce_data.csv"]
+        csv3["📄 interacciones.csv"]
+        csv4["📄 productos.csv"]
+    end
+
+    subgraph BRONZE["🟤 BRONZE — Ingesta de Datos Crudos"]
+        b1["clientes_sistema"]
+        b2["ecommerce_data"]
+        b3["interaccion_sistema"]
+        b4["productos_sistema"]
+    end
+
+    subgraph SILVER["⚪ SILVER — Datos Limpios y Tipados"]
+        s1["tabla_cliente"]
+        s2["tabla_intecommerce"]
+        s3["tabla_destipinteraccion"]
+        s4["tabla_producto"]
+    end
+
+    subgraph GOLDEN["🟡 GOLDEN — Tablas de Negocio y Analítica"]
+        g1["interaccion_analisis"]
+        g2["clientes_top_compras"]
+        g3["categoria_top_ecommerce"]
+    end
+
+    subgraph GOV["👁️ GOBERNANZA — Esquemas Vista"]
+        direction LR
+        v1["bronze_v / silver_v / golden_v\nDatos críticos hasheados"]
+        v2["bronze_vdc / silver_vdc / golden_vdc\nDatos críticos visibles"]
+    end
+
+    csv1 -->|PySpark| b1
+    csv2 -->|PySpark| b2
+    csv3 -->|PySpark| b3
+    csv4 -->|PySpark| b4
+
+    b1 -->|Limpieza y tipado| s1
+    b2 -->|Limpieza y tipado| s2
+    b3 -->|Limpieza y tipado| s3
+    b4 -->|Limpieza y tipado| s4
+
+    s1 --> g1
+    s2 --> g1
+    s3 --> g1
+    s4 --> g1
+
+    s1 --> g2
+    s2 --> g2
+    s4 --> g2
+
+    s2 --> g3
+    s3 --> g3
+    s4 --> g3
+
+    BRONZE -.->|Vistas con hash / sin hash| GOV
+    SILVER -.->|Vistas con hash / sin hash| GOV
+    GOLDEN -.->|Vistas con hash / sin hash| GOV
+
+    style ADLS fill:#e6f3ff,stroke:#4a90d9,color:#000
+    style BRONZE fill:#d4a574,stroke:#8b6914,color:#000
+    style SILVER fill:#e8e8e8,stroke:#999,color:#000
+    style GOLDEN fill:#fff3b0,stroke:#d4a017,color:#000
+    style GOV fill:#f0e6ff,stroke:#7b68ee,color:#000
+```
+
+**Flujo de datos:**
+* **ADLS → Bronze:** Ingesta de archivos CSV crudos mediante PySpark.
+* **Bronze → Silver:** Limpieza, tipado de columnas (VARCHAR, DECIMAL, DATE) y estandarización de nombres en español.
+* **Silver → Golden:** Cruces entre tablas dimensionales para generar KPIs y métricas de negocio.
+* **Todas las capas → Gobernanza:** Creación de esquemas vista con datos hasheados (`_v`) y sin hashear (`_vdc`) para control de acceso.
+
 
 ## 📑 Diccionario de Tablas y Columnas
 
@@ -282,6 +359,8 @@ Gestiona la gobernanza y los privilegios de los usuarios en el clúster.
 Gestiona la gobernanza y los privilegios de los usuarios.
 * **Función:** Ejecuta comandos `GRANT` y creación de grupos de usuarios.
 * **Uso:** Definir quién puede leer cada capa de datos en el entorno vista (Ej. Data Engineers vs. Data Steward).
+
+![Evidencia_Workflow_2.png](Evidencia_Workflow_2.png)
 
 ---
 
