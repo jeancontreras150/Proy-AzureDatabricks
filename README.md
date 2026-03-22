@@ -143,7 +143,7 @@ Tabla que tiene como registros a las interacciones que realizan los clientes en 
 ---
 
 #### Tabla: `bronze.interaccion_sistema`
-Tabla que tiene a los tipos de interacciones que se pueden realizar en la pagina web (Ej. Compra, Vista, etc) (Datos crudos)\
+Tabla que tiene a los tipos de interacciones que se pueden realizar en la página web (Ej. Compra, Vista, etc) (Datos crudos)\
 *Ubicación:* `catalogo_desa_intecommerce.bronze.interaccion_sistema` |
 
 | Columna | Tipo | Descripción |
@@ -157,7 +157,7 @@ Tabla que tiene a los tipos de interacciones que se pueden realizar en la pagina
 ---
 
 #### Tabla: `bronze.productos_sistema`
-Tabla que tiene a los productos y sus respectivas categorias registradas en la pagina web (Datos crudos)\
+Tabla que tiene a los productos y sus respectivas categorias registradas en la página web (Datos crudos)\
 *Ubicación:* `catalogo_desa_intecommerce.bronze.productos_sistema` |
 
 | Columna | Tipo | Descripción |
@@ -189,7 +189,7 @@ Tabla que tiene como registro a los clientes que se encuentran interactuando en 
 ---
 
 #### Tabla: `silver.tabla_destipinteraccion`
-Tabla que tiene a los tipos de interacciones que se pueden realizar en la pagina web (Ej. Compra, Vista, etc)\
+Tabla que tiene a los tipos de interacciones que se pueden realizar en la página web (Ej. Compra, Vista, etc)\
 *Ubicación:* `catalogo_desa_intecommerce.silver.tabla_destipinteraccion` |
 
 | Columna | Tipo | Descripción |
@@ -222,7 +222,7 @@ Tabla que tiene como registros a las interacciones que realizan los clientes en 
 ---
 
 #### Tabla: `silver.tabla_producto`
-Tabla que tiene a los productos y sus respectivas categorias registradas en la pagina web.\
+Tabla que tiene a los productos y sus respectivas categorias registradas en la página web.\
 *Ubicación:* `catalogo_desa_intecommerce.silver.tabla_producto` |
 
 | Columna | Tipo | Descripción |
@@ -238,7 +238,7 @@ Tabla que tiene a los productos y sus respectivas categorias registradas en la p
 ### 🟡 Capa Golden (Tablas de Negocio / Analítica)
 
 #### Tabla: `golden.categoria_top_ecommerce`
-Tabla que tiene los detalles de las interacciones que se realizaron en la pagina web con nombre de productos, clientes, interaccion, obtenidos de las tablas dimensionales.\
+Tabla que registra la cantidad de interacciones que tiene cada categoria de producto y añade una clasificación de categoría según la cantidad de interacciones en la pagina web.\
 *Ubicación:* `catalogo_desa_intecommerce.golden.categoria_top_ecommerce` |
 
 | Columna | Tipo | Descripción |
@@ -252,7 +252,7 @@ Tabla que tiene los detalles de las interacciones que se realizaron en la pagina
 ---
 
 #### Tabla: `golden.clientes_top_compras`
-Tabla que registra las compras totales que realizaron los clientes en la pagina web, ademas, añade una categoría al cliente por la compra acumulada realizada.\
+Tabla que registra las compras totales que realizaron los clientes en la página web, ademas, añade una categoría al cliente por la compra acumulada y realizada.\
 *Ubicación:* `catalogo_desa_intecommerce.golden.clientes_top_compras` | Solo ingresan los registros con interacción de compra (Purchase)
 
 | Columna | Tipo | Descripción |
@@ -266,7 +266,7 @@ Tabla que registra las compras totales que realizaron los clientes en la pagina 
 ---
 
 #### Tabla: `golden.interaccion_analisis`
-Tabla que registra la cantidad de interacciones que tiene cada categoria de producto y añade una clasificacion de categoria segun la cantidad de interacciones en la pagina web.\
+Tabla que tiene los detalles de las interacciones que se realizaron en la página web con nombre de productos, clientes, interacción obtenidos de las tablas dimensionales.\
 *Ubicación:* `catalogo_desa_intecommerce.golden.interaccion_analisis` |
 
 | Columna | Tipo | Descripción |
@@ -291,17 +291,17 @@ Tabla que registra la cantidad de interacciones que tiene cada categoria de prod
 
 ### 👁️ Esquemas Vista (Resumen de Tablas por Esquema)
 
-1.  **Bronze_v :** Esquema vista que hashea datos criticos (Ej. Nombre, Numero de celular, Apellido)
-2.  **Silver_v :** Esquema vista que hashea datos criticos (Ej. Nombre, Numero de celular, Apellido)
-3.  **Golden_v :** Esquema vista que hashea datos criticos (Ej. Nombre, Numero de celular, Apellido)
-4.  **Bronze_vdc :** Esquema vista para usuarios con acceso a visualización de datos criticos (Ej. Nombre, Numero de celular, Apellido)
-5.  **Silver_vdc :** Esquema vista para usuarios con acceso a visualización de datos criticos (Ej. Nombre, Numero de celular, Apellido)
-6.  **Golden_vdc :** Esquema vista para usuarios con acceso a visualización de datos criticos (Ej. Nombre, Numero de celular, Apellido)
+1.  **Bronze_v :** Esquema vista que hashea datos críticos (Ej. Nombre, Numero de celular, Apellido)
+2.  **Silver_v :** Esquema vista que hashea datos críticos (Ej. Nombre, Numero de celular, Apellido)
+3.  **Golden_v :** Esquema vista que hashea datos críticos (Ej. Nombre, Numero de celular, Apellido)
+4.  **Bronze_vdc :** Esquema vista para usuarios con acceso a visualización de datos críticos (Ej. Nombre, Numero de celular, Apellido)
+5.  **Silver_vdc :** Esquema vista para usuarios con acceso a visualización de datos críticos (Ej. Nombre, Numero de celular, Apellido)
+6.  **Golden_vdc :** Esquema vista para usuarios con acceso a visualización de datos críticos (Ej. Nombre, Numero de celular, Apellido)
 
 Las siguientes tablas muestran las vistas disponibles en cada esquema de gobernanza:
 
 #### Vistas sin acceso a datos críticos: 
-Por temas de seguridad, los datos criticos se encuentran hasheados en este esquema y todos los grupos y usuarios pueden acceder.
+Por temas de seguridad, los datos críticos se encuentran hasheados en este esquema y todos los grupos y usuarios pueden acceder.
 
 | Esquema | Tablas Disponibles |
 | :--- | :--- |
@@ -310,7 +310,7 @@ Por temas de seguridad, los datos criticos se encuentran hasheados en este esque
 | `golden_v` | categoria_top_ecommerce, clientes_top_compras, interaccion_analisis |
 
 #### Vistas con acceso a datos críticos: 
-Solo los usuarios con acceso a datos criticos pueden acceder (Ej. Data Stewards)
+Solo los usuarios con acceso a datos críticos pueden acceder (Ej. Data Stewards)
 
 | Esquema | Tablas Disponibles |
 | :--- | :--- |
@@ -328,7 +328,7 @@ Para ejecutar el pipeline completo de manera secuencial:
 Script para creación del catalogo, esquemas, esquemas vistas y external location para la lectura y escritura en el container ADLS
 
 
-### 1. `Grants.ipynb`
+### 1. `DDL-Tablas.ipynb`
 Script para creación de tablas fisicas y direccionamiento de las rutas y container en ADLS
 * **Función:** Ejecuta comandos de creacion de tablas.
 
@@ -358,7 +358,7 @@ Gestiona la gobernanza y los privilegios de los usuarios en el clúster.
 
 ### 6. `Grants.ipynb`
 Gestiona la gobernanza y los privilegios de los usuarios.
-* **Función:** Ejecuta comandos `GRANT` y creación de grupos de usuarios.
+* **Función:** Ejecuta comandos `GRANT`, creación de grupos y agregación de los usuarios a grupos.
 * **Uso:** Definir quién puede leer cada capa de datos en el entorno vista (Ej. Data Engineers vs. Data Steward).
 
 ![Evidencia_Workflow_2.png](Evidencia_Workflow_2.png)
