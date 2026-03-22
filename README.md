@@ -1,12 +1,8 @@
-# Proy-AzureDatabricks
-Este repositorio es acerca del proyecto de DB en Smart Data
-
-# Documentación Técnica: Sistema de Procesamiento y Gobernanza de Datos
+# Documentación Técnica: Sistema de Procesamiento y Gobernanza de Datos para una plataforma de comercio electrónico (E-commerce)
 
 ## 📋 Resumen del Proyecto
-Este proyecto realiza una ejecucion de un modelo de arquitectura Medallion del cual extrae, transforma y carga datos hacia tablas delta para el analisis y tratamiento de datos en nube para la toma decisiones en un empresa.\
-**Propósito:** El sistema está diseñado para el **tratamiento y análisis de interacciones de clientes en el ambito del E-commerce** dentro de su interfaz web (interacciones con pagina web, navegación, compras, preferencia de los productos y categorias, clientes), con el fin de optimizar la experiencia de usuario en la empresa.
-
+Este proyecto realiza una ejecucion de un modelo de arquitectura Medallion del cual extrae, transforma y carga datos hacia tablas delta para el analisis y tratamiento de datos en nube para la toma decisiones en una empresa.\
+**Propósito:** El sistema está diseñado para el **tratamiento y análisis de interacciones de clientes en el ambito del E-commerce** dentro de su interfaz web (interacciones en la pagina web, navegación, compras, preferencia de los productos y categorias, clientes), con el fin de optimizar la experiencia de usuario en la empresa.
 
 ---
 
@@ -31,11 +27,10 @@ El proyecto se divide en tres capas lógicas para garantizar la calidad del dato
 
 **Catálogo:** `catalogo_desa_intecommerce`
 
----
-
 ### 🟤 Capa Bronze (Ingesta de Datos Crudos)
 
 #### Tabla: `bronze.clientes_sistema`
+Tabla que tiene como registros a los clientes que se encuentran interactuando en la plataforma E-commerce (Datos crudos)\
 *Ubicación:* `catalogo_desa_intecommerce.bronze.clientes_sistema` |
 
 | Columna | Tipo | Descripción |
@@ -51,6 +46,7 @@ El proyecto se divide en tres capas lógicas para garantizar la calidad del dato
 ---
 
 #### Tabla: `bronze.ecommerce_data`
+Tabla que tiene como registros a las interacciones que realizan los clientes en la plataforma E-commerce con detalles (fecha, hora, lugar, etc) (Datos crudos)\
 *Ubicación:* `catalogo_desa_intecommerce.bronze.ecommerce_data` |
 
 | Columna | Tipo | Descripción |
@@ -69,6 +65,7 @@ El proyecto se divide en tres capas lógicas para garantizar la calidad del dato
 ---
 
 #### Tabla: `bronze.interaccion_sistema`
+Tabla que tiene a los tipos de interacciones que se pueden realizar en la pagina web (Ej. Compra, Vista, etc) (Datos crudos)\
 *Ubicación:* `catalogo_desa_intecommerce.bronze.interaccion_sistema` |
 
 | Columna | Tipo | Descripción |
@@ -82,6 +79,7 @@ El proyecto se divide en tres capas lógicas para garantizar la calidad del dato
 ---
 
 #### Tabla: `bronze.productos_sistema`
+Tabla que tiene a los productos y sus respectivas categorias registradas en la pagina web (Datos crudos)\
 *Ubicación:* `catalogo_desa_intecommerce.bronze.productos_sistema` |
 
 | Columna | Tipo | Descripción |
@@ -97,6 +95,7 @@ El proyecto se divide en tres capas lógicas para garantizar la calidad del dato
 ### ⚪ Capa Silver (Datos Limpios y Tipados)
 
 #### Tabla: `silver.tabla_cliente`
+Tabla que tiene como registro a los clientes que se encuentran interactuando en la plataforma E-commerce\
 *Ubicación:* `catalogo_desa_intecommerce.silver.tabla_cliente` |
 
 | Columna | Tipo | Descripción |
@@ -112,6 +111,7 @@ El proyecto se divide en tres capas lógicas para garantizar la calidad del dato
 ---
 
 #### Tabla: `silver.tabla_destipinteraccion`
+Tabla que tiene a los tipos de interacciones que se pueden realizar en la pagina web (Ej. Compra, Vista, etc)\
 *Ubicación:* `catalogo_desa_intecommerce.silver.tabla_destipinteraccion` |
 
 | Columna | Tipo | Descripción |
@@ -125,6 +125,7 @@ El proyecto se divide en tres capas lógicas para garantizar la calidad del dato
 ---
 
 #### Tabla: `silver.tabla_intecommerce`
+Tabla que tiene como registros a las interacciones que realizan los clientes en la plataforma E-commerce con los detalles (fecha, hora, lugar, etc)\
 *Ubicación:* `catalogo_desa_intecommerce.silver.tabla_intecommerce` |
 
 | Columna | Tipo | Descripción |
@@ -143,6 +144,7 @@ El proyecto se divide en tres capas lógicas para garantizar la calidad del dato
 ---
 
 #### Tabla: `silver.tabla_producto`
+Tabla que tiene a los productos y sus respectivas categorias registradas en la pagina web.\
 *Ubicación:* `catalogo_desa_intecommerce.silver.tabla_producto` |
 
 | Columna | Tipo | Descripción |
@@ -158,6 +160,7 @@ El proyecto se divide en tres capas lógicas para garantizar la calidad del dato
 ### 🟡 Capa Golden (Tablas de Negocio / Analítica)
 
 #### Tabla: `golden.categoria_top_ecommerce`
+Tabla que tiene los detalles de las interacciones que se realizaron en la pagina web con nombre de productos, clientes, interaccion, obtenidos de las tablas dimensionales.\
 *Ubicación:* `catalogo_desa_intecommerce.golden.categoria_top_ecommerce` |
 
 | Columna | Tipo | Descripción |
@@ -171,6 +174,7 @@ El proyecto se divide en tres capas lógicas para garantizar la calidad del dato
 ---
 
 #### Tabla: `golden.clientes_top_compras`
+Tabla que registra las compras totales que realizaron los clientes en la pagina web, ademas, añade una categoría al cliente por la compra acumulada realizada.\
 *Ubicación:* `catalogo_desa_intecommerce.golden.clientes_top_compras` | Solo ingresan los registros con interacción de compra (Purchase)
 
 | Columna | Tipo | Descripción |
@@ -184,6 +188,7 @@ El proyecto se divide en tres capas lógicas para garantizar la calidad del dato
 ---
 
 #### Tabla: `golden.interaccion_analisis`
+Tabla que registra la cantidad de interacciones que tiene cada categoria de producto y añade una clasificacion de categoria segun la cantidad de interacciones en la pagina web.\
 *Ubicación:* `catalogo_desa_intecommerce.golden.interaccion_analisis` |
 
 | Columna | Tipo | Descripción |
@@ -201,71 +206,81 @@ El proyecto se divide en tres capas lógicas para garantizar la calidad del dato
 | `Locacion` | `STRING` | Ubicación geográfica de la interacción. |
 | `Categoria` | `VARCHAR(256)` | Categoría del producto. |
 | `Nombre_producto` | `VARCHAR(256)` | Nombre del producto. |
-| `Cantidad_Producto` | `STRING` | Cantidad de productos comprados (Si la interacción no es compra al dato será '-'). |
+| `Cantidad_Producto` | `STRING` | Cantidad de productos comprados (Si la interacción no es compra, el valor será '-'). |
 | `Puntuacion_Producto` | `DECIMAL(10,1)` | Puntuación/calificación del producto. |
 
 ---
 
 ### 👁️ Esquemas Vista (Resumen de Tablas por Esquema)
 
-1.  **Bronze_v :** Esquema vista para usuarios sin acceso a datos criticos (Ej. Nombre, Numero de celular, Apellido)
-2.  **Silver_v :** Esquema vista para usuarios sin acceso a datos criticos (Ej. Nombre, Numero de celular, Apellido)
-3.  **Golden_v :** Esquema vista para usuarios sin acceso a datos criticos (Ej. Nombre, Numero de celular, Apellido)
-4.  **Bronze_vdc :** Esquema vista para usuarios con acceso a datos criticos (Ej. Nombre, Numero de celular, Apellido)
-5.  **Silver_vdc :** Esquema vista para usuarios con acceso a datos criticos (Ej. Nombre, Numero de celular, Apellido)
-6.  **Golden_vdc :** Esquema vista para usuarios con acceso a datos criticos (Ej. Nombre, Numero de celular, Apellido)
----
+1.  **Bronze_v :** Esquema vista que hashea datos criticos (Ej. Nombre, Numero de celular, Apellido)
+2.  **Silver_v :** Esquema vista que hashea datos criticos (Ej. Nombre, Numero de celular, Apellido)
+3.  **Golden_v :** Esquema vista que hashea datos criticos (Ej. Nombre, Numero de celular, Apellido)
+4.  **Bronze_vdc :** Esquema vista para usuarios con acceso a visualización de datos criticos (Ej. Nombre, Numero de celular, Apellido)
+5.  **Silver_vdc :** Esquema vista para usuarios con acceso a visualización de datos criticos (Ej. Nombre, Numero de celular, Apellido)
+6.  **Golden_vdc :** Esquema vista para usuarios con acceso a visualización de datos criticos (Ej. Nombre, Numero de celular, Apellido)
 
 Las siguientes tablas muestran las vistas disponibles en cada esquema de gobernanza:
 
-#### Vistas sin acceso a datos críticos: Por temas de seguridad, los datos criticos se encuentran hasheados en este esquema y todos los grupos y usuarios pueden acceder.
+#### Vistas sin acceso a datos críticos: 
+Por temas de seguridad, los datos criticos se encuentran hasheados en este esquema y todos los grupos y usuarios pueden acceder.
 
 | Esquema | Tablas Disponibles |
 | :--- | :--- |
-| `bronze_v` | `clientes_sistema`, `ecommerce_data`, `interaccion_sistema`, `productos_sistema` |
-| `silver_v` | `tabla_cliente`, `tabla_destipinteraccion`, `tabla_intecommerce`, `tabla_producto` |
-| `golden_v` | `categoria_top_ecommerce`, `clientes_top_compras`, `interaccion_analisis` |
+| `bronze_v` | clientes_sistema, ecommerce_data, interaccion_sistema, productos_sistema |
+| `silver_v` | tabla_cliente, tabla_destipinteraccion, tabla_intecommerce, tabla_producto |
+| `golden_v` | categoria_top_ecommerce, clientes_top_compras, interaccion_analisis |
 
-#### Vistas con acceso a datos críticos: Solo los usuarios con acceso a datos criticos pueden acceder (Ej. Data Stewards, Product Owner y Data Analysts)
+#### Vistas con acceso a datos críticos: 
+Solo los usuarios con acceso a datos criticos pueden acceder (Ej. Data Stewards)
 
 | Esquema | Tablas Disponibles |
 | :--- | :--- |
-| `bronze_vdc` | `clientes_sistema` |
-| `silver_vdc` | `tabla_cliente` |
-| `golden_vdc` | `clientes_top_compras`, `interaccion_analisis` |
+| `bronze_vdc` | clientes_sistema |
+| `silver_vdc` | tabla_cliente |
+| `golden_vdc` | clientes_top_compras, interaccion_analisis |
 
 ---
 
-## 📜 Descripción de Scripts y orden del Workflow
+## 📜 Descripción de Scripts y orden de ejecución del Workflow
 
 Para ejecutar el pipeline completo de manera secuencial:
 
+### 0. `Creacion_cat-Preamb.ipynb`
+Script para creación del catalogo, esquemas, esquemas vistas y external location para la lectura y escritura en el container ADLS
+
+
 ### 1. `Grants.ipynb`
-Script para creacion de tablas fisicas y direccionamiento de las rutas y container en ADLS
+Script para creación de tablas fisicas y direccionamiento de las rutas y container en ADLS
 * **Función:** Ejecuta comandos de creacion de tablas.
+
 
 ### 2. `Bronze_TablaEcom_data.ipynb` y `Bronze_Tablas_Des.ipynb`
 Script de Python para pruebas de carga y desarrollo.
 * **Función:** Realiza la ingesta de los datos en archivos CSV hacia la capa bronze.
 * **Lógica:** Utiliza lenguaje de PySpark para la ingesta, estructuración e inserción de datos a las tablas.
 
+
 ### 3. `Silver_Tabla_IntEcommerce.ipynb` y `Silver_Tablas_Des.ipynb`
 Script de Python para pruebas de carga y desarrollo.
 * **Función:** Realiza la lectura de las tablas bronze, limpieza y la ingesta de los datos hacia las tablas de la capa silver. Luego, cambia los nombres estandarizados de los campos de la tabla
 * **Lógica:** Utiliza lenguaje de PySpark para la estructuración e inserción de datos a las tablas.
+
 
 ### 4. `Golden_Categoria_Top_Ecommerce.ipynb`, `Golden_Clientes_Top_Compras.ipynb` y `Golden_Interaccion_Analisis.ipynb`
 Script de Python para pruebas de carga y desarrollo.
 * **Función:** Realiza cruces entre las tablas de las silver para la creacion de tablas con KPIs y mediciones que permitan visualizar resultados con el propósito de analizalos.
 * **Lógica:** Utiliza lenguaje de PySpark para la ingesta, estructuración e inserción de datos a las tablas.
 
+
 ### 5. `DDL_TablasVistas.ipynb.ipynb`
 Gestiona la gobernanza y los privilegios de los usuarios en el clúster.
 * **Función:** Ejecuta comandos para la creacion de tablas en los esquemas vista y vista de datos criticos y la ingesta de los datos de todas las capas por cada esquema creado.
 
+
 ### 6. `Grants.ipynb`
 Gestiona la gobernanza y los privilegios de los usuarios.
-* **Función:** Ejecuta comandos `GRANT`.
+* **Función:** Ejecuta comandos `GRANT` y creación de grupos de usuarios.
 * **Uso:** Definir quién puede leer cada capa de datos en el entorno vista (Ej. Data Engineers vs. Data Steward).
 
 ---
