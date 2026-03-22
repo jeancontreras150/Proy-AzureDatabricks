@@ -1,0 +1,7 @@
+TypeInt_id;Interaction_name;Des_Spanish;System_date
+TipInt001;VIEW;Vista;01/01/2024
+TipInt002;CLICK;Click;01/01/2024
+TipInt003;ADD_TO_CAR;Agregar al carrito;01/01/2024
+TipInt004;PURCHASE;Compra;01/01/2024
+TipInt005;VIDEO_DEMO_PLAY;Reproducción del video demostrativo;01/01/2024
+TipInt006;SHARE_PRODUCT_WA;Compartir link por WhatsApp;01/01/2024

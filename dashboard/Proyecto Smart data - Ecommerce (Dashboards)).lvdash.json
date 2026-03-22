@@ -1,0 +1,487 @@
+{
+  "datasets": [
+    {
+      "name": "71d853ce",
+      "displayName": "Clientes_Top_Compras",
+      "queryLines": [
+        "select * from clientes_top_compras"
+      ],
+      "catalog": "catalogo_desa_intecommerce",
+      "schema": "golden"
+    },
+    {
+      "name": "aecc8282",
+      "displayName": "Top 10 Clientes",
+      "queryLines": [
+        "select * from catalogo_desa_intecommerce.golden.clientes_top_compras limit 10\r\n",
+        "\r\n"
+      ]
+    },
+    {
+      "name": "f3dcbb01",
+      "displayName": "Interaccion_Analisis",
+      "queryLines": [
+        "select * from interaccion_analisis"
+      ],
+      "catalog": "catalogo_desa_intecommerce",
+      "schema": "golden"
+    },
+    {
+      "name": "88d03940",
+      "displayName": "Categoria",
+      "queryLines": [
+        "select * from categoria_top_ecommerce \r\n",
+        "\r\n",
+        "\r\n",
+        "\r\n"
+      ],
+      "catalog": "catalogo_desa_intecommerce",
+      "schema": "golden"
+    }
+  ],
+  "pages": [
+    {
+      "name": "5a35864d",
+      "displayName": "Summary",
+      "layout": [
+        {
+          "widget": {
+            "name": "4e04176c",
+            "multilineTextboxSpec": {
+              "lines": [
+                "<span style=\"font-size: 36px;line-height: 1.5;\">**Proyecto Smart data - Ecommerce**</span>"
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "0d866301",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "71d853ce",
+                  "fields": [
+                    {
+                      "name": "KPI_Tipo_Cliente",
+                      "expression": "`KPI_Tipo_Cliente`"
+                    },
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "showDescription": false
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "KPI_Tipo_Cliente",
+                  "displayName": "Segmentacion de Clientes",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "count(*)",
+                  "displayName": "Número de Clientes",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "extra": [
+                  {
+                    "fieldName": "KPI_Tipo_Cliente"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 10,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "top-10-de-clientes",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "aecc8282",
+                  "fields": [
+                    {
+                      "name": "Precio_Compra_Total",
+                      "expression": "`Precio_Compra_Total`"
+                    },
+                    {
+                      "name": "Nombre_completo",
+                      "expression": "`Nombre_completo`"
+                    }
+                  ],
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Top 10 de Clientes "
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Precio_Compra_Total",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "Nombre_completo",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 9,
+            "width": 12,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "interacciones-por-ciudad",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "f3dcbb01",
+                  "fields": [
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    },
+                    {
+                      "name": "Locacion",
+                      "expression": "`Locacion`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Interacciones por Ciudad"
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "count(*)",
+                  "displayName": "Número de Interacciones",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "Locacion",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 17,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "categoria-productos-segun-pagina-web",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "88d03940",
+                  "fields": [
+                    {
+                      "name": "KPI_Producto_Ecommerce",
+                      "expression": "`KPI_Producto_Ecommerce`"
+                    },
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Categoria de Productos segun Pagina Web"
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "KPI_Producto_Ecommerce",
+                  "displayName": "Tipo de Categoria",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "count(*)",
+                  "displayName": "Numero de Productos",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 29,
+            "width": 12,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "cantidad-interaccion-por-hora",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "f3dcbb01",
+                  "fields": [
+                    {
+                      "name": "Hora_Interaccion",
+                      "expression": "`Hora_Interaccion`"
+                    },
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showTitle": true,
+                "title": "Cantidad de Interaccion por Hora"
+              },
+              "widgetType": "histogram",
+              "encodings": {
+                "x": {
+                  "fieldName": "Hora_Interaccion",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "count(*)",
+                  "displayName": "Cantidad de Interacciones",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 23,
+            "width": 11,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "genieSpace": {
+      "isEnabled": true,
+      "enablementMode": "ENABLED"
+    },
+    "applyModeEnabled": false
+  }
+}
