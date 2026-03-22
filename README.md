@@ -1,9 +1,10 @@
 # Documentación Técnica: Sistema de Procesamiento y Gobernanza de Datos para una plataforma de comercio electrónico (E-commerce)
 
 ## 📋 Resumen del Proyecto
-Este proyecto realiza una ejecucion de un modelo de arquitectura Medallion del cual extrae, transforma y carga datos hacia tablas delta para el analisis y tratamiento de datos en nube para la toma decisiones en una empresa.\
+Este proyecto realiza una ejecucion de un modelo de arquitectura Medallion del cual extrae, transforma y carga datos hacia tablas delta para el análisis y tratamiento de datos en nube para la toma decisiones en una empresa.\
 **Propósito:** El sistema está diseñado para el **tratamiento y análisis de interacciones de clientes en el ambito del E-commerce** dentro de su interfaz web (interacciones en la pagina web, navegación, compras, preferencia de los productos y categorias, clientes), con el fin de optimizar la experiencia de usuario en la empresa.
 
+![Arquitectura.png](Arquitectura.png)
 ---
 
 ## 🛠️ Stack Tecnológico
@@ -22,7 +23,7 @@ El proyecto se divide en tres capas lógicas para garantizar la calidad del dato
 2.  **Silver (Limpieza):** Datos filtrados, tipados y con esquemas definidos.
 3.  **Golden (Negocio):** Tablas finales listas para consumo de BI y analítica.
 
-### Diagrama de Arquitectura
+### Diagrama
 
 ```mermaid
 flowchart TB
