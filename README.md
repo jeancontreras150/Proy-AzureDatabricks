@@ -368,5 +368,6 @@ Gestiona la gobernanza y los privilegios de los usuarios.
 
 [https://github.com/jeancontreras150/Proy-AzureDatabricks/tree/construccion/dashboard](https://github.com/jeancontreras150/Proy-AzureDatabricks/tree/construccion/dashboard)
 
-
-> **Nota de Administración:** Este repositorio es mantenido por el administrador del workspace. Cualquier cambio en los permisos de las tablas debe ser documentado en la sección de auditoría.
+---
+**Autor del documento:** Jean Contreras Sanchez\
+Correo: jean.contreras.150@gmail.com
