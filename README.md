@@ -26,7 +26,7 @@ El proyecto se divide en tres capas lógicas para garantizar la calidad del dato
 
 ```mermaid
 flowchart TB
-    subgraph ADLS["☁️ Azure Data Lake Storage Gen2 - Archivos CSV"]
+    subgraph ADLS["☁️ Azure Data Lake Storage Gen2 - Archivos CSV - Container: raw-insumos"]
         csv1["📄 clientes.csv"]
         csv2["📄 ecommerce_data.csv"]
         csv3["📄 interacciones.csv"]
@@ -53,7 +53,7 @@ flowchart TB
         g3["categoria_top_ecommerce"]
     end
 
-    subgraph GOV["👁️ GOBERNANZA — Esquemas Vista"]
+    subgraph GOV["👁️ GOBERNANZA — Esquemas Vista y Vista Datos Críticos"]
         direction LR
         v1["bronze_v / silver_v / golden_v\nDatos críticos hasheados"]
         v2["bronze_vdc / silver_vdc / golden_vdc\nDatos críticos visibles"]
