@@ -328,7 +328,7 @@ Para ejecutar el pipeline completo de manera secuencial:
 Script para creación del catalogo, esquemas, esquemas vistas y external location para la lectura y escritura en el container ADLS
 
 
-### 1. `Grants.ipynb`
+### 1. `DDL-Tablas.ipynb`
 Script para creación de tablas fisicas y direccionamiento de las rutas y container en ADLS
 * **Función:** Ejecuta comandos de creacion de tablas.
 
