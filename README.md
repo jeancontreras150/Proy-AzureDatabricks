@@ -238,7 +238,7 @@ Tabla que tiene a los productos y sus respectivas categorias registradas en la p
 ### 🟡 Capa Golden (Tablas de Negocio / Analítica)
 
 #### Tabla: `golden.categoria_top_ecommerce`
-Tabla que tiene los detalles de las interacciones que se realizaron en la pagina web con nombre de productos, clientes, interaccion, obtenidos de las tablas dimensionales.\
+Tabla que registra la cantidad de interacciones que tiene cada categoria de producto y añade una clasificacion de categoria segun la cantidad de interacciones en la pagina web.\
 *Ubicación:* `catalogo_desa_intecommerce.golden.categoria_top_ecommerce` |
 
 | Columna | Tipo | Descripción |
@@ -266,7 +266,7 @@ Tabla que registra las compras totales que realizaron los clientes en la pagina 
 ---
 
 #### Tabla: `golden.interaccion_analisis`
-Tabla que registra la cantidad de interacciones que tiene cada categoria de producto y añade una clasificacion de categoria segun la cantidad de interacciones en la pagina web.\
+Tabla que tiene los detalles de las interacciones que se realizaron en la pagina web con nombre de productos, clientes, interaccion, obtenidos de las tablas dimensionales.\
 *Ubicación:* `catalogo_desa_intecommerce.golden.interaccion_analisis` |
 
 | Columna | Tipo | Descripción |
